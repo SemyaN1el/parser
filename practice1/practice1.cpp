@@ -1,4 +1,4 @@
-﻿#include <string>
+#include <string>
 #include <map>
 #include <functional>
 #include <algorithm>
@@ -7,9 +7,10 @@
 #include <stack>
 #include <sstream>
 #include <Windows.h>
-# define M_PI           3.14159265358979323846  /* pi */
-# define M_PI2          M_PI/2.
-# define M_E            2.71828182845904523536
+#define M_PI           3.14159265358979323846  /* pi */
+#define M_PI2          M_PI/2.
+#define M_E            2.71828182845904523536
+#define endl '\n'
 
 enum TokenType1 {
 	_func,
@@ -477,13 +478,15 @@ int main() {
 		std::getline(std::cin,str);
 		Solver sol;
 		sol.Load(str);
+		std::cout << "Expression tree" << endl;
 		sol.Print();
+		std::cout << endl;
 		if (!sol.error.empty()) {
-			MessageBoxA(NULL, ("Ошибка\n" + sol.error).c_str(), NULL, NULL);
-			std::cout << sol.error << std::endl;
+			MessageBoxA(NULL, ("Error\n" + sol.error).c_str(), NULL, NULL);
+			std::cout << sol.error << endl;
 			continue;
 		}
 		double ans = sol.Solve();
-		std::cout << ans << std::endl;
+		std::cout << std::format("Result: {:.2f}\n",ans) << endl;
 	}
 }
